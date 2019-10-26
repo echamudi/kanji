@@ -65,6 +65,12 @@ The rest of arrays are not ordered.
 | master | [![Build Status](https://travis-ci.org/ezhmd/kanji.svg?branch=master)](https://travis-ci.org/ezhmd/kanji) |
 | develop | [![Build Status](https://travis-ci.org/ezhmd/kanji.svg?branch=develop)](https://travis-ci.org/ezhmd/kanji) |
 
+```
+npm install
+npm run download-source
+npm run extract-kanjivg-tree
+```
+
 ### Testing
 ```
 npm test
@@ -81,6 +87,7 @@ The items are collected from following sources.
 - 日本漢字能力検定級別漢字表 https://www.kanken.or.jp/kanken/outline/degree.html
 - 漢字辞典 https://kanjijoho.com
 - 辞典オンライン https://jitenon.jp
+- KanjiVG by Ulrich Apel https://github.com/KanjiVG/kanjivg
 
 ## Authors
 
