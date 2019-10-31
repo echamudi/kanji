@@ -1,13 +1,13 @@
 {
   "name": "kanji",
-  "version": "0.3.1",
+  "version": "0.5.0",
   "description": "Get kanji characters in an array based on categorization",
   "main": "index.js",
   "scripts": {
     "download-source": "node ./scripts/download-source.js",
     "extract-kanjium-data": "node ./scripts/extract-kanjium-data.js",
     "extract-kanjivg-tree": "node ./scripts/extract-kanjivg-tree.js",
-    "test": "mocha ./test/test.js"
+    "test": "mocha ./test/test.js && mocha ./test/test-cli.js"
   },
   "repository": {
     "type": "git",
@@ -18,8 +18,12 @@
   "bugs": {
     "url": "https://github.com/ezhmd/kanji/issues"
   },
+  "bin": {
+    "kanji-tree": "./bin/kanji-tree.js"
+  },
   "homepage": "https://github.com/ezhmd/kanji#readme",
   "devDependencies": {
+    "csvtojson": "^2.0.10",
     "mocha": "^6.2.0",
     "xml2json": "^0.11.2"
   }

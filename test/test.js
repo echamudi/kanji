@@ -2,8 +2,10 @@
 
 const assert = require('assert');
 const kanji = require('../');
+const jsonLoader = require('../lib/json-loader');
+const path = require('path');
 
-const allArrays = [
+const collectionArray = [
     kanji.kanken.lv10, // 0
     kanji.kanken.lv09, // 1
     kanji.kanken.lv08, // 2
@@ -34,11 +36,17 @@ const allArrays = [
     kanji.grade.g08, // 27
     kanji.grade.g09, // 28
     kanji.grade.g10, // 29
-    kanji.freq, // 30
-    kanji.all // 31
+    kanji.freq.list, // 30
+    kanji.all.list // 31
 ];
 
 describe('testing Kanji', function () {
+    describe('testing json loader', function () {
+        it('loads json', function () {
+            assert.deepStrictEqual(jsonLoader(path.join('.','test','fixtures','simple-array.json')), ['A', 'B']);
+        });
+    });
+
     describe('testing kanji tree', function () {
         it('exports correct object', function () {
             assert.deepStrictEqual(kanji.kanjiTree('国'),
@@ -124,18 +132,27 @@ describe('testing Kanji', function () {
         });
 
         it('has freq properties', function () {
-            assert.deepStrictEqual(Array.isArray(kanji.freq), true);
+            assert.deepStrictEqual(Array.isArray(kanji.freq.list), true);
         });
 
         it('has all properties', function () {
             // 13,108 kanji from KANJIDIC (JIS X 0208-1998, JIS X 0212-1990, JIS X 0213-2012)
-            assert.deepStrictEqual(Array.isArray(kanji.all), true);
+            assert.deepStrictEqual(Array.isArray(kanji.all.list), true);
+        });
+    });
+
+    describe('random test content', function() {
+        it('has correct related kanji content', function () {
+            assert.deepStrictEqual(kanji.related.antonyms["悪"], ["善", "美", "好", "良"]);
+            assert.deepStrictEqual(kanji.related.lookalikes["会"], ["今", "令", "合"]);
+            assert.deepStrictEqual(kanji.related.synonyms["悪"], ["醜", "粗", "憎"]);
+            assert.deepStrictEqual(kanji.related.variants["万"], ["萬"]);
         });
     });
 
     describe('uniqueness test', function () {
         it('has unique arrays for all', function () {
-            allArrays.forEach((array, index) => {
+            collectionArray.forEach((array, index) => {
                 const set = new Set();
 
                 array.forEach((char) => {
