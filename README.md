@@ -149,19 +149,17 @@ npm run extract-kanjium-data
 ```
 npm test
 ```
-## References
 
-The items are collected from following sources.
+## Acknowledgment
+
+The items are collected from following sources:
 
 - JLPT Study by Peter van der Woude https://jlptstudy.net
 - Jonathan Waller JLPT Kanji List http://www.tanos.co.uk/jlpt/
 - KANJIDIC Project http://www.edrdg.org/wiki/index.php/KANJIDIC_Project
-- Kanshudo Kanji Collections https://www.kanshudo.com/collections
-- nihongo-pro.com https://nihongo-pro.com/
 - 日本漢字能力検定級別漢字表 https://www.kanken.or.jp/kanken/outline/degree.html
-- 漢字辞典 https://kanjijoho.com
-- 辞典オンライン https://jitenon.jp
 - KanjiVG by Ulrich Apel https://github.com/KanjiVG/kanjivg
+- Kanjium by Uros Ozvatic https://github.com/mifunetoshiro/kanjium
 
 ## Authors
 
@@ -170,6 +168,8 @@ The items are collected from following sources.
 See also the list of [contributors](https://github.com/ezhmd/kanji/graphs/contributors) who participated in this project.
 
 ## License
+
+Copyright © 2020 Ezzat Chamudi
 
 Kanji code is licensed under [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/). Images, logos, docs, and articles in this Kanji project are released under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode).
 
