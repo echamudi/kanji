@@ -135,8 +135,8 @@ Output
 
 | Branch | Status |
 | - | - |
-| master | [![Build Status](https://travis-ci.org/ezhmd/kanji.svg?branch=master)](https://travis-ci.org/ezhmd/kanji) |
-| develop | [![Build Status](https://travis-ci.org/ezhmd/kanji.svg?branch=develop)](https://travis-ci.org/ezhmd/kanji) |
+| master | [![Build Status](https://travis-ci.org/echamudi/kanji.svg?branch=master)](https://travis-ci.org/echamudi/kanji) |
+| develop | [![Build Status](https://travis-ci.org/echamudi/kanji.svg?branch=develop)](https://travis-ci.org/echamudi/kanji) |
 
 ```
 npm install
@@ -149,6 +149,15 @@ npm run extract-kanjium-data
 ```
 npm test
 ```
+
+## Contributing
+
+This project is following [git-flow branching model](https://github.com/echamudi/echamudi-docs/blob/master/git-strategy/gitflow.png). 
+- Please create a branch from `develop`.
+- Name it something descriptive other than `master`, `develop`, `release-*`, or `hotfix-*`.
+- Open a pull request to `develop`.
+
+Make sure your contributions are compatible with the license of this project.
 
 ## Acknowledgment
 
@@ -163,14 +172,14 @@ The items are collected from following sources:
 
 ## Authors
 
-* **Ezzat Chamudi** - [ezhmd](https://github.com/ezhmd)
+* **Ezzat Chamudi** - [echamudi](https://github.com/echamudi)
 
-See also the list of [contributors](https://github.com/ezhmd/kanji/graphs/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/echamudi/kanji/graphs/contributors) who participated in this project.
 
 ## License
 
 Copyright © 2020 Ezzat Chamudi
 
-Kanji code is licensed under [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/). Images, logos, docs, and articles in this Kanji project are released under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode).
+Kanji code is licensed under [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/). Images, logos, docs, and articles in this project are released under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode).
 
-Libraries, dependencies, and tools used in this project are tied with their own licenses respectively.
+Libraries, dependencies, and tools used in this project are tied with their licenses.
