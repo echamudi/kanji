@@ -8,6 +8,15 @@ os:
   - linux
 
 install:
+  # Prepare libraries
+  - npm install
+  - npm run download-source
+  - npm run extract-kanjivg-tree
+  - npm run extract-kanjium-data
+  - npm install rimraf -g
+  - rimraf node_modules
+
+  # Production only
   - npm install --only=prod
   - npm link --only=prod
   - npm install -g mocha
