@@ -1,60 +1,77 @@
 # Kanji
 
+[![Build Status](https://travis-ci.org/echamudi/kanji.svg?branch=master)](https://travis-ci.org/echamudi/kanji)
+
 With Kanji you can:
 - Get kanji characters in an array based on categorization.
 - Get kanji composition tree.
 
 ## Usage as Module
 
-### Kanji collections
+### Kanji Readings
+
+Get the readings of kanji
 
 ```js
 const kanji = require('kanji');
 
+kanji.reading('食')
+/* Result:
+{
+  on: [ 'ショク', 'ジキ' ],
+  kun: [ 'く.う', 'く.らう', 'た.べる', 'は.む' ],
+  nanori: [ 'ぐい' ]
+}
+*/
+```
+
+### Kanji Collections
+
+```js
 // Kanji Kentei
-console.log(kanji.kanken.lv10);
-console.log(kanji.kanken.lv09);
-console.log(kanji.kanken.lv08);
-console.log(kanji.kanken.lv07);
-console.log(kanji.kanken.lv06);
-console.log(kanji.kanken.lv05);
-console.log(kanji.kanken.lv04);
-console.log(kanji.kanken.lv03);
-console.log(kanji.kanken.lv02pre);
-console.log(kanji.kanken.lv02);
-console.log(kanji.kanken.lv01pre);
-console.log(kanji.kanken.lv01);
+console.log(kanji.kanken.lv10());
+console.log(kanji.kanken.lv09());
+console.log(kanji.kanken.lv08());
+console.log(kanji.kanken.lv07());
+console.log(kanji.kanken.lv06());
+console.log(kanji.kanken.lv05());
+console.log(kanji.kanken.lv04());
+console.log(kanji.kanken.lv03());
+console.log(kanji.kanken.lv02pre());
+console.log(kanji.kanken.lv02());
+console.log(kanji.kanken.lv01pre());
+console.log(kanji.kanken.lv01());
 
 // Old JLPT
-console.log(kanji.jlpt.old4);
-console.log(kanji.jlpt.old3);
-console.log(kanji.jlpt.old2);
-console.log(kanji.jlpt.old1);
+console.log(kanji.jlpt.old4());
+console.log(kanji.jlpt.old3());
+console.log(kanji.jlpt.old2());
+console.log(kanji.jlpt.old1());
 
 // New JLPT
-console.log(kanji.jlpt.n5);
-console.log(kanji.jlpt.n4);
-console.log(kanji.jlpt.n3);
-console.log(kanji.jlpt.n2);
-console.log(kanji.jlpt.n1);
+console.log(kanji.jlpt.n5());
+console.log(kanji.jlpt.n4());
+console.log(kanji.jlpt.n3());
+console.log(kanji.jlpt.n2());
+console.log(kanji.jlpt.n1());
 
 // Kyouiku Kanji
-console.log(kanji.grade.g01);
-console.log(kanji.grade.g02);
-console.log(kanji.grade.g03);
-console.log(kanji.grade.g04);
-console.log(kanji.grade.g05);
-console.log(kanji.grade.g06);
-console.log(kanji.grade.g08); // Remaining of Joyo Kanji
-console.log(kanji.grade.g09); // Jinmeiyo Kanji
-console.log(kanji.grade.g10); // Variant of Joyo Kanji
+console.log(kanji.grade.g01());
+console.log(kanji.grade.g02());
+console.log(kanji.grade.g03());
+console.log(kanji.grade.g04());
+console.log(kanji.grade.g05());
+console.log(kanji.grade.g06());
+console.log(kanji.grade.g08()); // Remaining of Joyo Kanji
+console.log(kanji.grade.g09()); // Jinmeiyo Kanji
+console.log(kanji.grade.g10()); // Variant of Joyo Kanji
 
 // Frequency 1-2501 Kanji taken from KANJIDIC
 // The frequency list is made by Alexandre Girardi
-console.log(kanji.freq);
+console.log(kanji.freq());
 
-// 13,108 kanji from KANJIDIC (JIS X 0208-1998, JIS X 0212-1990, JIS X 0213-2012)
-console.log(kanji.all);
+// 13,108 kanji from KANJIDIC (JIS X 0208-1998, JIS X 0212-1990, JIS X 0213-2012())
+console.log(kanji.all());
 
 ```
 
@@ -64,13 +81,13 @@ The rest of arrays are not ordered.
 ### Related Kanji
 
 ```js
-console.log(kanji.related.antonyms);
-console.log(kanji.related.lookalikes);
-console.log(kanji.related.synonyms);
-console.log(kanji.related.variants);
+console.log(kanji.related.antonyms());
+console.log(kanji.related.lookalikes());
+console.log(kanji.related.synonyms());
+console.log(kanji.related.variants());
 ```
 
-### Kanji composition tree
+### Kanji Composition Tree
 
 ```js
 const kanji = require('kanji');
@@ -80,31 +97,39 @@ console.log(kanji.kanjiTree('国'));
 /* Result:
 {
     element: "国",
-    g: [{ element: "囗" },
-    {
-        element: "玉",
-        g: [
-            { element: "王" },
-            { element: "丶" }
-        ]
-    },
-    { element: "囗" }
+    g: [{
+            element: "囗"
+        },
+        {
+            element: "玉",
+            g: [{
+                    element: "王"
+                },
+                {
+                    element: "丶"
+                }
+            ]
+        },
+        {
+            element: "囗"
+        }
     ]
-} */
+}
+*/
 ```
 
 ### Note
 
 Everytime you access the kanji collection properties or call `kanjiTree` function, it reads the json file from the lib folder. If you call the same character frequently, please use memoization techniques to reduce file read.
 
-## Usage as CLI tool
+## Usage as CLI Tool
 
 Install kanji tool
 ```
 npm install -g kanji
 ```
 
-### Show kanji tree
+### Show kanji Tree
 
 ```sh
 kanji-tree 焼き鳥
@@ -141,8 +166,8 @@ Output
 ```
 npm install
 npm run download-source
-npm run extract-kanjivg-tree
-npm run extract-kanjium-data
+npm run extract-data
+npm run watch
 ```
 
 ### Testing

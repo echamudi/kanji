@@ -1,6 +1,3 @@
-/source
+/raw-data
 node_modules
-
-# This items will be generated in postinstall script
-/lib/kanji-tree
-/lib/kanjium
+/dist

@@ -16,8 +16,8 @@ const path = require('path');
 const fs = require('fs');
 const xml2json = require('xml2json');
 
-let files = fs.readdirSync(path.join('.', 'source', 'kanjivg', 'kanji'));
-fs.mkdirSync(path.join('.', 'lib', 'kanji-tree'), { recursive: true });
+let files = fs.readdirSync(path.join('.', 'raw-data', 'kanjivg', 'kanji'));
+fs.mkdirSync(path.join('.', 'dist', 'kanji-tree'), { recursive: true });
 
 // Only svg files
 files = files.filter((el) => el.slice(-3) === 'svg');
@@ -45,8 +45,6 @@ function traverse(node) {
             traverse(element);
         });
     }
-
-    return;
 };
 
 function deleteEmpties(node) {
@@ -74,8 +72,6 @@ function deleteEmpties(node) {
             delete node.g;
         }
     }
-
-    return;
 }
 
 
@@ -83,7 +79,7 @@ function deleteEmpties(node) {
 files.forEach((fileNameSvg, index) => {
     const fileNameOnly = fileNameSvg.slice(0, fileNameSvg.length - 4);
 
-    const data = fs.readFileSync(path.join('.', 'source', 'kanjivg', 'kanji', fileNameSvg), 'utf8');
+    const data = fs.readFileSync(path.join('.', 'raw-data', 'kanjivg', 'kanji', fileNameSvg), 'utf8');
     const svgObj = xml2json.toJson(data, {
         object: true,
         arrayNotation: true,
@@ -96,12 +92,12 @@ files.forEach((fileNameSvg, index) => {
     // sort keys and convert to string
     let jsonString;
     if (root.g !== undefined) {
-        jsonString = JSON.stringify(root.g[0], Object.keys(root.g[0]).sort(), 2);
+        jsonString = JSON.stringify(root.g[0], Object.keys(root.g[0]).sort());
     } else {
         jsonString = '{}';
     }
 
-    fs.writeFileSync(path.join('.', 'lib', 'kanji-tree', fileNameOnly + '.json'), jsonString, function (err) {
+    fs.writeFileSync(path.join('.', 'dist', 'kanji-tree', fileNameOnly + '.json'), jsonString, function (err) {
         if (err) {
             console.log(err);
         }
@@ -115,7 +111,7 @@ KanjiVG is copyright © 2009-2018 Ulrich Apel and released under the Creative Co
 `;
 
 // Add notice
-fs.writeFileSync(path.join('.', 'lib', 'kanji-tree', '_notice.txt'), notice, function (err) {
+fs.writeFileSync(path.join('.', 'dist', 'kanji-tree', '_notice.txt'), notice, function (err) {
     if (err) {
         console.log(err);
     }

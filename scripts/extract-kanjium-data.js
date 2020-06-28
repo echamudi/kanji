@@ -13,7 +13,7 @@ const path = require('path');
 const csvtojson = require('csvtojson');
 
 (async () => {
-    const targetDir = path.join('.', 'lib', 'kanjium');
+    const targetDir = path.join('.', 'dist', 'kanjium');
     const csvtojsonConfig = {
         delimiter: '\t',
         noheader: 'true',
@@ -33,15 +33,15 @@ const csvtojson = require('csvtojson');
 
         const objRaw = await csvtojson(csvtojsonConfig)
             .fromFile(
-                path.join(__dirname, '..', 'source', 'kanjium-' + name + '.txt')
+                path.join(__dirname, '..', 'raw-data', 'kanjium-' + name + '.txt')
             );
 
         objRaw.forEach((el) => {
             obj[el.key] = el.val.split(',')
         });
     
-        // Save antonyms
-        fs.writeFileSync(path.join(targetDir, 'kanjium-' + name + '.json'), JSON.stringify(obj, null, 2));
+        // Save
+        fs.writeFileSync(path.join(targetDir, 'kanjium-' + name + '.json'), JSON.stringify(obj));
     }
 
     extractKanjium('antonyms');
